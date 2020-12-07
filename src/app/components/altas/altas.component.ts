@@ -20,7 +20,7 @@ export class AltasComponent implements OnInit {
       fecha_archivo: ['',Validators.required],
       semestre: ['',Validators.required],
       materia: ['',Validators.required],
-      select_img: ['', Validators.required]
+      select_archivo: ['', Validators.required]
     });
   }
 

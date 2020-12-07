@@ -74,11 +74,11 @@
 
         <div class="form-row row justify-content-md-center">
             <div class="col mt-3">
-                <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="select_img"
-                    class="form-control" [ngClass]="{'is-invalid': submitted && f.select_img.errors}"
+                <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="select_archivo"
+                    class="form-control" [ngClass]="{'is-invalid': submitted && f.select_archivo.errors}"
                     accept="image/x-png,image/gif,image/jpeg" (change)="fileChange($event)">
-                <div *ngIf="submitted && f.select_img.errors" class="invalid-feedback">
-                    <div *ngIf="f.select_img.errors.required">Por favor ingrese un archivo</div>
+                <div *ngIf="submitted && f.select_archivo.errors" class="invalid-feedback">
+                    <div *ngIf="f.select_archivo.errors.required">Por favor ingrese un archivo</div>
                 </div>
             </div>
         </div>
