@@ -1,11 +1,11 @@
 <div class="container" style="margin-top: 20px;">
     <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
         <div class="form-group">
-            <label for="nombre">Nombre del producto</label>
+            <label for="nombre">Nombre del archivo</label>
             <input type="text" formControlName="nombre" class="form-control"
                 [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
             <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del producto</div>
+                <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del archivo</div>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            <label for="descripcion">Descripción</label>
+            <label for="descripcion">Descripción del archivo</label>
             <textarea formControlName="descripcion" class="form-control"
                 [ngClass]="{'is-invalid': submitted && f.descripcion.errors}"></textarea>
             <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
@@ -29,6 +29,47 @@
             </div>
         </div>
 
+        <div class="form-group col mt-3">
+            <label for="fecha_archivo">Fecha de entrega</label>
+            <input type="date" formControlName="fecha_archivo" class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.fecha_archivo.errors}">
+            <div *ngIf="submitted && f.fecha_archivo.errors" class="invalid-feedback">
+                <div *ngIf="f.fecha_archivo.errors.required">Por favor ingrese la Fecha en que se debe entregar este
+                    archivo</div>
+            </div>
+        </div>
+
+        <div class="form-row row justify-content-md-center">
+            <div class="form-group col mt-3">
+                <label for="fecha_compra">Semestre</label>
+                <select id="semestre" name="semestre" formControlName="semestre" class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.semestre.errors}">
+                    <option value=""></option>
+                    <option value="1">1º</option>
+                    <option value="2">2º</option>
+                    <option value="3">3º</option>
+                    <option value="4">4º</option>
+                    <option value="5">5º</option>
+                    <option value="6">6º</option>
+                    <option value="7">7º</option>
+                    <option value="8">8º</option>
+                    <option value="9">9º</option>
+                    <option value="10">10º</option>
+                </select>
+                <div *ngIf="submitted && f.semestre.errors" class="invalid-feedback">
+                    <div *ngIf="f.semestre.errors.required">Por favor ingrese el semestre correspondient al archivo</div>
+                </div>
+            </div>
+
+            <div class="form-group col mt-3">
+                <label for="materia">Materia</label>
+                <input type="text" formControlName="materia" class="form-control"
+                    [ngClass]="{'is-invalid': submitted && f.materia.errors}">
+                <div *ngIf="submitted && f.materia.errors" class="invalid-feedback">
+                    <div *ngIf="f.materia.errors.required">Por favor ingrese el nombre de la materia</div>
+                </div>
+            </div>
+        </div>
 
 
         <div class="form-row row justify-content-md-center">
@@ -37,13 +78,13 @@
                     class="form-control" [ngClass]="{'is-invalid': submitted && f.select_img.errors}"
                     accept="image/x-png,image/gif,image/jpeg" (change)="fileChange($event)">
                 <div *ngIf="submitted && f.select_img.errors" class="invalid-feedback">
-                    <div *ngIf="f.select_img.errors.required">Por favor ingrese una imagen</div>
+                    <div *ngIf="f.select_img.errors.required">Por favor ingrese un archivo</div>
                 </div>
             </div>
         </div>
 
         <div class="form-group" style="text-align: center; margin-top: 20px;">
-            <button class="btn btn-primary">Enviar</button>
+            <button class="btn btn-primary">Subir archivo</button>
         </div>
 
     </form>

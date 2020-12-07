@@ -17,6 +17,9 @@ export class AltasComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
+      fecha_archivo: ['',Validators.required],
+      semestre: ['',Validators.required],
+      materia: ['',Validators.required],
       select_img: ['', Validators.required]
     });
   }
