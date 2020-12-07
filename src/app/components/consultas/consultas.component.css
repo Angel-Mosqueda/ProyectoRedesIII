@@ -1,5 +1,6 @@
 .contenedor-padre{
-    background-color: rgb(255, 255, 255); 
+    background-color: rgb(255, 255, 255);
+    background-image: url("../../../assets/images/fondo_consultas.jpg"); 
     width: 100%; 
     margin: 0px 0px 0px;
     margin-top: 0px;
@@ -16,7 +17,6 @@
     /*margin-top: 2vh;*/
     width: 90%;
     margin: auto;
-    margin-top: 0%;
 }
 
 .galeria h1{
@@ -38,7 +38,6 @@
     justify-content: space-around;
     flex-wrap: wrap;
     border-radius: 3px;
-    
 }
 
 .contenedor-imagenes .imagen{
@@ -48,6 +47,7 @@
     position: relative;
     height: 252px;
     margin-bottom: 5vh;
+    margin-top: 30px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .75);
 }
 
