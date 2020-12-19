@@ -13,7 +13,7 @@
                             <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
 
                             <button href="#" class="btn btn-outline-primary">Modificar</button>
-                            <button data-toggle="modal" data-target="#exampleModal" 
+                            <button data-toggle="modal" data-target="#modalEliminacion" 
                             (click)="obtenerID(documento.id)" class="btn btn-outline-danger" 
                             style="margin-left: 102px;">Eliminar</button>
                         </div>
@@ -25,7 +25,7 @@
     </div>
     
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="modalEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button (click)="eliminarDocumento()" class="btn btn-primary">Aceptar</button>
+                    <button (click)="eliminarDocumento()" data-dismiss="modal" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
