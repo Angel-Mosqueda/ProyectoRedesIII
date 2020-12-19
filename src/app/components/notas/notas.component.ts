@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from '../../services/requests.service';
+
 
 @Component({
   selector: 'app-notas',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotasComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _req: RequestsService) { 
+    this._req.obtenerDocumentos().subscribe((documents:any[]) => {
+      console.log(documents);
+    });
+    
+  }
 
   ngOnInit(): void {
   }
+
+  
 
 }

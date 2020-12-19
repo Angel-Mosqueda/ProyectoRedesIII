@@ -9,8 +9,14 @@ import { ConsultasComponent } from './components/consultas/consultas.component';
 import { SemestresComponent } from './components/semestres/semestres.component';
 import { AltasComponent } from './components/altas/altas.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { ReactiveFormsModule } from '@angular/forms';
+import { RequestsService } from '../app/services/requests.service';
+
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +25,19 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ConsultasComponent,
     SemestresComponent,
-    AltasComponent
+    AltasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp( environment.firebaseConfig ),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [RequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-altas',
