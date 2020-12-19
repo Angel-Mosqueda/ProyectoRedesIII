@@ -17,6 +17,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
+import { Globals } from './interface/globals.interface';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginComponent } from './components/login/login.component';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [RequestsService],
+  providers: [Globals,
+              RequestsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

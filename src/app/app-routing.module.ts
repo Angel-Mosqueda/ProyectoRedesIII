@@ -5,9 +5,10 @@ import { ConsultasComponent } from './components/consultas/consultas.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotasComponent } from './components/notas/notas.component';
 import { SemestresComponent } from './components/semestres/semestres.component';
+import { LoginComponent } from './components/login/login.component'
 
 const routes: Routes = [
-  { path:'', component:HomeComponent },
+  { path:'', component:LoginComponent },
   { path:'home', component:HomeComponent},
   { path:'consultas', component:ConsultasComponent },
   { path:'notas', component:NotasComponent },
