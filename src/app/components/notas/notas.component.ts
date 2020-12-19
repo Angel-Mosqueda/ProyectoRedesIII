@@ -10,6 +10,7 @@ import { RequestsService } from '../../services/requests.service';
 export class NotasComponent implements OnInit {
   documentos: any[] = [];
   idEliminacion: string;
+  documento: any;
   constructor(public _req: RequestsService) { 
     this._req.obtenerDocumentos().subscribe((documents:any[]) => {
       this.documentos = documents;
@@ -26,12 +27,20 @@ export class NotasComponent implements OnInit {
     this.idEliminacion = id;
   }
 
+  obtenerDoc(doc: any){
+    this.documento = doc;
+  }
+
   eliminarDocumento(){
     this._req.eliminarDocumento(this.idEliminacion).then( (success) => {
       console.log('documento eliminado')
     }, (error) => {
       console.log("error al eliminar")
     })
+  }
+
+  modificarDocumento(){
+
   }
 
 }
