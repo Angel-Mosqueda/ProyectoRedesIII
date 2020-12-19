@@ -1,49 +1,171 @@
 <div class="fondo">
-    <button class="btn btn-info" [routerLink]="['/consultas']" style="margin-left: 30px; margin-top: 30px;">Regresar a Consultas</button>
-    
-        <h1 class="text-center display-4" style="margin-bottom: 30px; font-weight: bold;">Tareas y Documentos</h1>
-        <div class="container">
-            <div class="rows">
-                <div class="card-columns">
-                    <div *ngFor="let documento of this.documentos" class="card" style="width: 20rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{documento.nombre_archivo}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Materia: {{documento.materia}}</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Profesor: {{documento.nombre_profesor}}</h6>
-                            <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
+    <button class="btn btn-info" [routerLink]="['/consultas']" style="margin-left: 30px; margin-top: 30px;">Regresar a
+        Consultas</button>
 
-                            <button href="#" class="btn btn-outline-primary">Modificar</button>
-                            <button data-toggle="modal" data-target="#modalEliminacion" 
-                            (click)="obtenerID(documento.id)" class="btn btn-outline-danger" 
-                            style="margin-left: 102px;">Eliminar</button>
+    <h1 class="text-center display-4" style="margin-bottom: 30px; font-weight: bold;">Tareas y Documentos</h1>
+    <div class="container">
+        <div class="rows">
+            <div class="card-columns">
+                <div *ngFor="let documento of this.documentos" class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{documento.nombre_archivo}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Materia: {{documento.materia}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Profesor: {{documento.nombre_profesor}}</h6>
+                        <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
+
+                        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificacion"
+                            (click)="obtenerDoc(documento)">Modificar</button>
+                        <button data-toggle="modal" data-target="#modalEliminacion" (click)="obtenerID(documento.id)"
+                            class="btn btn-outline-danger" style="margin-left: 102px;">Eliminar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estas Seguro de Eliminar Este Documento?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button (click)="eliminarDocumento()" data-dismiss="modal" class="btn btn-danger">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal de Modificar-->
+<div class="modal fade" id="modalModificacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modificacion de archivo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                <form [formGroup]="formulario" (ngSubmit)="modificarDocumento()">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del archivo</label>
+                        <input type="text" formControlName="nombre" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
+                        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                            <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del archivo</div>
                         </div>
                     </div>
-                   
+            
+                    <div class="form-row row justify-content-md-center">
+            
+                    </div>
+            
+                    <div class="form-row row justify-content-md-center">
+            
+                    </div>
+            
+                    <div class="form-row row justify-content-md-center">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="descripcion">Descripción del archivo</label>
+                        <textarea formControlName="descripcion" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.descripcion.errors}"></textarea>
+                        <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                            <div *ngIf="f.descripcion.errors.required">Por favor ingrese una descripcion</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group col mt-3">
+                        <label for="fecha_archivo">Fecha de entrega</label>
+                        <input type="date" formControlName="fecha_archivo" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.fecha_archivo.errors}">
+                        <div *ngIf="submitted && f.fecha_archivo.errors" class="invalid-feedback">
+                            <div *ngIf="f.fecha_archivo.errors.required">Por favor ingrese la Fecha en que se debe entregar este
+                                archivo</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-row row justify-content-md-center">
+                        <div class="form-group col mt-3">
+                            <label for="fecha_compra">Semestre</label>
+                            <select id="semestre" name="semestre" formControlName="semestre" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.semestre.errors}">
+                                <option value=""></option>
+                                <option value="1">1º</option>
+                                <option value="2">2º</option>
+                                <option value="3">3º</option>
+                                <option value="4">4º</option>
+                                <option value="5">5º</option>
+                                <option value="6">6º</option>
+                                <option value="7">7º</option>
+                                <option value="8">8º</option>
+                                <option value="9">9º</option>
+                                <option value="10">10º</option>
+                            </select>
+                            <div *ngIf="submitted && f.semestre.errors" class="invalid-feedback">
+                                <div *ngIf="f.semestre.errors.required">Por favor ingrese el semestre correspondient al archivo</div>
+                            </div>
+                        </div>
+            
+                        <div class="form-group col mt-3">
+                            <label for="materia">Materia</label>
+                            <input type="text" formControlName="materia" class="form-control"
+                                [ngClass]="{'is-invalid': submitted && f.materia.errors}">
+                            <div *ngIf="submitted && f.materia.errors" class="invalid-feedback">
+                                <div *ngIf="f.materia.errors.required">Por favor ingrese el nombre de la materia</div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="nombreProf">Nombre del profesor</label>
+                        <input type="text" formControlName="nombreProf" class="form-control"
+                            [ngClass]="{'is-invalid': submitted && f.nombreProf.errors}">
+                        <div *ngIf="submitted && f.nombreProf.errors" class="invalid-feedback">
+                            <div *ngIf="f.nombreProf.errors.required">Por favor ingrese el nombre del archivo</div>
+                        </div>
+                    </div>
+            
+            
+                    <div class="form-row row justify-content-md-center">
+                        <div class="col mt-3">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="select_archivo"
+                                class="form-control" [ngClass]="{'is-invalid': submitted && f.select_archivo.errors}"
+                                accept="image/x-png,image/gif,image/jpeg" (change)="fileChange($event)">
+                            <div *ngIf="submitted && f.select_archivo.errors" class="invalid-feedback">
+                                <div *ngIf="f.select_archivo.errors.required">Por favor ingrese un archivo</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group" style="text-align: center; margin-top: 20px;">
+                        <button class="btn btn-primary">Modificar archivo</button>
+                        <button class="btn btn-danger" [routerLink]="['/home']" style="margin-left: 20px;">Cancelar</button>
+                    </div>
+                    
+            
+                </form>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button (click)="eliminarDocumento()" data-dismiss="modal" class="btn btn-danger">Aceptar</button>
             </div>
         </div>
     </div>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="modalEliminacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmación</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ¿Estas Seguro de Eliminar Este Documento?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button (click)="eliminarDocumento()" data-dismiss="modal" class="btn btn-danger">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
+</div>
