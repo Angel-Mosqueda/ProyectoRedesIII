@@ -60,11 +60,23 @@ export class NotasComponent implements OnInit {
   }
 
   modificarDocumento(){
-
+    //console.log(this.documento);
     this.submitted = true;
     if (this.formulario.invalid) {
       return;
     } else {
+      this.documento = {
+        id: this.documento.id,
+        materia: this.formulario.controls['materia'].value,
+        semestre: this.formulario.controls['semestre'].value,
+        nombre_profesor: this.formulario.controls['nombreProf'].value,
+        descripcion: this.formulario.controls['descripcion'].value,
+        nombre_archivo: this.formulario.controls['nombre'].value,
+        fecha_entrega: this.formulario.controls['fecha_archivo'].value,
+        url: 'afsfssasfa'
+        
+      }
+      //console.log(this.documento);
       this._req.modificarDocumento(this.documento).then( (success) => {
         console.log("documento modificado")
       }, (error) => {

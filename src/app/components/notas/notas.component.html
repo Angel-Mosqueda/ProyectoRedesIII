@@ -60,111 +60,116 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                <form [formGroup]="formulario" (ngSubmit)="modificarDocumento()">
-                    <div class="form-group">
-                        <label for="nombre">Nombre del archivo</label>
-                        <input type="text" formControlName="nombre" class="form-control"
-                            [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
-                        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                            <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del archivo</div>
+                    <form [formGroup]="formulario" (ngSubmit)="modificarDocumento()">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del archivo</label>
+                            <input type="text" formControlName="nombre" class="form-control"
+                                [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
+                            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                                <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del archivo</div>
+                            </div>
                         </div>
-                    </div>
-            
-                    <div class="form-row row justify-content-md-center">
-            
-                    </div>
-            
-                    <div class="form-row row justify-content-md-center">
-            
-                    </div>
-            
-                    <div class="form-row row justify-content-md-center">
-                    </div>
-            
-                    <div class="form-group">
-                        <label for="descripcion">Descripción del archivo</label>
-                        <textarea formControlName="descripcion" class="form-control"
-                            [ngClass]="{'is-invalid': submitted && f.descripcion.errors}"></textarea>
-                        <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
-                            <div *ngIf="f.descripcion.errors.required">Por favor ingrese una descripcion</div>
+
+                        <div class="form-row row justify-content-md-center">
+
                         </div>
-                    </div>
-            
-                    <div class="form-group col mt-3">
-                        <label for="fecha_archivo">Fecha de entrega</label>
-                        <input type="date" formControlName="fecha_archivo" class="form-control"
-                            [ngClass]="{'is-invalid': submitted && f.fecha_archivo.errors}">
-                        <div *ngIf="submitted && f.fecha_archivo.errors" class="invalid-feedback">
-                            <div *ngIf="f.fecha_archivo.errors.required">Por favor ingrese la Fecha en que se debe entregar este
-                                archivo</div>
+
+                        <div class="form-row row justify-content-md-center">
+
                         </div>
-                    </div>
-            
-                    <div class="form-row row justify-content-md-center">
+
+                        <div class="form-row row justify-content-md-center">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Descripción del archivo</label>
+                            <textarea formControlName="descripcion" class="form-control"
+                                [ngClass]="{'is-invalid': submitted && f.descripcion.errors}"></textarea>
+                            <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                                <div *ngIf="f.descripcion.errors.required">Por favor ingrese una descripcion</div>
+                            </div>
+                        </div>
+
                         <div class="form-group col mt-3">
-                            <label for="fecha_compra">Semestre</label>
-                            <select id="semestre" name="semestre" formControlName="semestre" class="form-control"
-                            [ngClass]="{'is-invalid': submitted && f.semestre.errors}">
-                                <option value=""></option>
-                                <option value="1">1º</option>
-                                <option value="2">2º</option>
-                                <option value="3">3º</option>
-                                <option value="4">4º</option>
-                                <option value="5">5º</option>
-                                <option value="6">6º</option>
-                                <option value="7">7º</option>
-                                <option value="8">8º</option>
-                                <option value="9">9º</option>
-                                <option value="10">10º</option>
-                            </select>
-                            <div *ngIf="submitted && f.semestre.errors" class="invalid-feedback">
-                                <div *ngIf="f.semestre.errors.required">Por favor ingrese el semestre correspondient al archivo</div>
+                            <label for="fecha_archivo">Fecha de entrega</label>
+                            <input type="date" formControlName="fecha_archivo" class="form-control"
+                                [ngClass]="{'is-invalid': submitted && f.fecha_archivo.errors}">
+                            <div *ngIf="submitted && f.fecha_archivo.errors" class="invalid-feedback">
+                                <div *ngIf="f.fecha_archivo.errors.required">Por favor ingrese la Fecha en que se debe
+                                    entregar este
+                                    archivo</div>
                             </div>
                         </div>
-            
-                        <div class="form-group col mt-3">
-                            <label for="materia">Materia</label>
-                            <input type="text" formControlName="materia" class="form-control"
-                                [ngClass]="{'is-invalid': submitted && f.materia.errors}">
-                            <div *ngIf="submitted && f.materia.errors" class="invalid-feedback">
-                                <div *ngIf="f.materia.errors.required">Por favor ingrese el nombre de la materia</div>
+
+                        <div class="form-row row justify-content-md-center">
+                            <div class="form-group col mt-3">
+                                <label for="fecha_compra">Semestre</label>
+                                <select id="semestre" name="semestre" formControlName="semestre" class="form-control"
+                                    [ngClass]="{'is-invalid': submitted && f.semestre.errors}">
+                                    <option value=""></option>
+                                    <option value="1">1º</option>
+                                    <option value="2">2º</option>
+                                    <option value="3">3º</option>
+                                    <option value="4">4º</option>
+                                    <option value="5">5º</option>
+                                    <option value="6">6º</option>
+                                    <option value="7">7º</option>
+                                    <option value="8">8º</option>
+                                    <option value="9">9º</option>
+                                    <option value="10">10º</option>
+                                </select>
+                                <div *ngIf="submitted && f.semestre.errors" class="invalid-feedback">
+                                    <div *ngIf="f.semestre.errors.required">Por favor ingrese el semestre correspondient
+                                        al archivo</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col mt-3">
+                                <label for="materia">Materia</label>
+                                <input type="text" formControlName="materia" class="form-control"
+                                    [ngClass]="{'is-invalid': submitted && f.materia.errors}">
+                                <div *ngIf="submitted && f.materia.errors" class="invalid-feedback">
+                                    <div *ngIf="f.materia.errors.required">Por favor ingrese el nombre de la materia
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="nombreProf">Nombre del profesor</label>
-                        <input type="text" formControlName="nombreProf" class="form-control"
-                            [ngClass]="{'is-invalid': submitted && f.nombreProf.errors}">
-                        <div *ngIf="submitted && f.nombreProf.errors" class="invalid-feedback">
-                            <div *ngIf="f.nombreProf.errors.required">Por favor ingrese el nombre del archivo</div>
-                        </div>
-                    </div>
-            
-            
-                    <div class="form-row row justify-content-md-center">
-                        <div class="col mt-3">
-                            <input type="file" class="custom-file-input" id="customFileLang" lang="es" formControlName="select_archivo"
-                                class="form-control" [ngClass]="{'is-invalid': submitted && f.select_archivo.errors}"
-                                accept="image/x-png,image/gif,image/jpeg" (change)="fileChange($event)">
-                            <div *ngIf="submitted && f.select_archivo.errors" class="invalid-feedback">
-                                <div *ngIf="f.select_archivo.errors.required">Por favor ingrese un archivo</div>
+
+                        <div class="form-group">
+                            <label for="nombreProf">Nombre del profesor</label>
+                            <input type="text" formControlName="nombreProf" class="form-control"
+                                [ngClass]="{'is-invalid': submitted && f.nombreProf.errors}">
+                            <div *ngIf="submitted && f.nombreProf.errors" class="invalid-feedback">
+                                <div *ngIf="f.nombreProf.errors.required">Por favor ingrese el nombre del archivo</div>
                             </div>
                         </div>
-                    </div>
-            
-                    <div class="form-group" style="text-align: center; margin-top: 20px;">
-                        <button class="btn btn-primary">Modificar archivo</button>
-                        <button class="btn btn-danger" [routerLink]="['/home']" style="margin-left: 20px;">Cancelar</button>
-                    </div>
-                    
-            
-                </form>
+
+
+                        <div class="form-row row justify-content-md-center">
+                            <div class="col mt-3">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                    formControlName="select_archivo" class="form-control"
+                                    [ngClass]="{'is-invalid': submitted && f.select_archivo.errors}"
+                                    accept="image/x-png,image/gif,image/jpeg" (change)="fileChange($event)">
+                                <div *ngIf="submitted && f.select_archivo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.select_archivo.errors.required">Por favor ingrese un archivo</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align: center; margin-top: 20px;">
+                            <!--<button class="btn btn-primary">Modificar archivo</button>-->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button (click)="modificarDocumento()" class="btn btn-primary" style="margin: 10px; margin-left: 30px;">Aceptar</button>
+                        </div>
+
+
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button (click)="eliminarDocumento()" data-dismiss="modal" class="btn btn-danger">Aceptar</button>
+                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button (click)="modificarDocumento()" data-dismiss="modal" class="btn btn-danger">Aceptar</button>-->
             </div>
         </div>
     </div>
