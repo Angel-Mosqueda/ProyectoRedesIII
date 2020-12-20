@@ -43,9 +43,12 @@ export class RequestsService {
     return this._afAuth.signOut();
   }
 
+  MostrarSemestre(semestre: string){
+    console.log(semestre);
+  }
 
   obtenerDocumentos() {
-    this.documentsCollection = this.afs.collection<any>('Usuarios/' + this.globals.email + '/Archivos');
+    this.documentsCollection = this.afs.collection<any>('Usuarios/' + this.globals.email + '/Archivos', ref => ref.orderBy('semestre','asc'));
     //return this.documentsCollection.valueChanges();
     return this.documentsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -71,6 +74,8 @@ export class RequestsService {
     this.documentsCollection = this.afs.collection<any>('Usuarios/' + this.globals.email + '/Archivos');
     return this.documentsCollection.doc(document.id).update(document);
   }
+
+  
   /*
     cerrarSesion() {
       return this.http.get('/cerrar_sesion/');

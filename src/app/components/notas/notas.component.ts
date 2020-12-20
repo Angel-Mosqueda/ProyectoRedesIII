@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../../services/requests.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
+import {Globals } from '../../interface/globals.interface';
 
 @Component({
   selector: 'app-notas',
@@ -9,6 +10,7 @@ import { timer } from 'rxjs';
   styleUrls: ['./notas.component.css']
 })
 export class NotasComponent implements OnInit {
+  globals: Globals;
   documentos: any[] = [];
   idEliminacion: string;
   documento: any;
@@ -17,10 +19,11 @@ export class NotasComponent implements OnInit {
   file: File;
   fcreacion: Date;
   month: string;
-  constructor(public _req: RequestsService, private formBuilder: FormBuilder) { 
+  constructor(public _req: RequestsService, private formBuilder: FormBuilder, globals: Globals) { 
     this._req.obtenerDocumentos().subscribe((documents:any[]) => {
       this.documentos = documents;
       console.log(this.documentos);
+      this.globals=globals;
     });
     
   }
@@ -79,9 +82,10 @@ export class NotasComponent implements OnInit {
       }
       //console.log(this.documento);
       this._req.modificarDocumento(this.documento).then( (success) => {
-        console.log("documento modificado")
+        console.log("documento modificado");
+        window.location.href = "/consultas";
       }, (error) => {
-        console.log("error al modicar")
+        console.log("error al modicar");
       })
 
     }

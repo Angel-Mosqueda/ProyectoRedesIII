@@ -7,17 +7,33 @@
         <div class="rows">
             <div class="card-columns">
                 <div *ngFor="let documento of this.documentos" class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{documento.nombre_archivo}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Materia: {{documento.materia}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Profesor: {{documento.nombre_profesor}}</h6>
-                        <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
-
-                        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificacion"
-                            (click)="obtenerDoc(documento)">Modificar</button>
-                        <button data-toggle="modal" data-target="#modalEliminacion" (click)="obtenerID(documento.id)"
-                            class="btn btn-outline-danger" style="margin-left: 102px;">Eliminar</button>
-                    </div>
+                    <div *ngIf="documento.semestre == 7 else noSemestre">
+                        <div class="card-body">
+                            <h5 class="card-title">{{documento.nombre_archivo}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Materia: {{documento.materia}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Profesor: {{documento.nombre_profesor}}</h6>
+                            <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
+    
+                            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificacion"
+                                (click)="obtenerDoc(documento)">Modificar</button>
+                            <button data-toggle="modal" data-target="#modalEliminacion" (click)="obtenerID(documento.id)"
+                                class="btn btn-outline-danger" style="margin-left: 102px;">Eliminar</button>
+                        </div>
+                    </div> 
+                    <ng-template #noSemestre>
+                        <div class="card-body">
+                            <h5 class="card-title">{{documento.nombre_archivo}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Materia: {{documento.materia}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Profesor: {{documento.nombre_profesor}}</h6>
+                            <p class="card-text">Descripcion: <br>{{documento.descripcion}}</p>
+    
+                            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificacion"
+                                (click)="obtenerDoc(documento)">Modificar</button>
+                            <button data-toggle="modal" data-target="#modalEliminacion" (click)="obtenerID(documento.id)"
+                                class="btn btn-outline-danger" style="margin-left: 102px;">Eliminar</button>
+                        </div>
+                    </ng-template>
+                    
                 </div>
 
             </div>
