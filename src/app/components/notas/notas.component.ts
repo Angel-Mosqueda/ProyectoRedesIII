@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestsService } from '../../services/requests.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-notas',
@@ -82,7 +83,25 @@ export class NotasComponent implements OnInit {
       }, (error) => {
         console.log("error al modicar")
       })
+
     }
+    
+    //Limpia el modal
+    timer(1000).subscribe(x => { 
+
+      this.formulario = this.formBuilder.group({
+        nombre: '',
+        descripcion: '',
+        fecha_archivo: '',
+        semestre: '',
+        nombreProf: '',
+        materia: '',
+        select_archivo: ''
+      });
+
+    })
+
+    
   }
 
 }

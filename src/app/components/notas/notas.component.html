@@ -63,7 +63,7 @@
                     <form [formGroup]="formulario" (ngSubmit)="modificarDocumento()">
                         <div class="form-group">
                             <label for="nombre">Nombre del archivo</label>
-                            <input type="text" formControlName="nombre" class="form-control"
+                            <input type="text" formControlName="nombre" class="form-control Rellendor"
                                 [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
                             <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
                                 <div *ngIf="f.nombre.errors.required">Por favor ingrese el nombre del archivo</div>
@@ -160,7 +160,8 @@
                         <div class="form-group" style="text-align: center; margin-top: 20px;">
                             <!--<button class="btn btn-primary">Modificar archivo</button>-->
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button (click)="modificarDocumento()" class="btn btn-primary" style="margin: 10px; margin-left: 30px;">Aceptar</button>
+                            <button id="limpiar" (click)="modificarDocumento()" class="btn btn-primary" style="margin: 10px; margin-left: 30px;">Aceptar</button>
+                            
                         </div>
 
 
@@ -174,3 +175,4 @@
         </div>
     </div>
 </div>
+
